@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop/screens/product_detail_screen.dart';
 import 'package:shop/screens/products_overview_screen.dart';
-import './providers/products_provider.dart';
+import 'providers/products.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,8 +11,9 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (ctx)=>Products(),
+    return ChangeNotifierProvider.value(
+      value: Products(),
+      // create: (ctx)=>Products(), this is an alternative way, which is rarely used but is important in cases where u need the context.
       child: MaterialApp(
         theme: ThemeData(
           primarySwatch: Colors.purple,
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         home: ProductOverviewScreen(),
         debugShowCheckedModeBanner: false,
         routes: {
-          ProductDetailScreen.routeName:(ctx)=>ProductDetailScreen(),
+          ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
         },
       ),
     );
