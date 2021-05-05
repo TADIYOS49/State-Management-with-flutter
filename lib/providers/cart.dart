@@ -36,7 +36,7 @@ class Cart with ChangeNotifier {
               id: olditem.id,
               title: olditem.title,
               price: olditem.price,
-              quantity: olditem.quantity+1));
+              quantity: olditem.quantity + 1));
     } else {
       _items.putIfAbsent(
           productId,
@@ -46,6 +46,11 @@ class Cart with ChangeNotifier {
               price: price,
               quantity: 1));
     }
+    notifyListeners();
+  }
+
+  void removeItem(String productId) {
+    _items.remove(productId);
     notifyListeners();
   }
 }

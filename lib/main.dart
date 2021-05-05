@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        // create: (ctx)=>Products(), this is an alternative way, which is rarely used but is important in cases where u need the context.
         ChangeNotifierProvider.value(
           value: Products(),
         ),
@@ -22,7 +23,6 @@ class MyApp extends StatelessWidget {
           value: Cart(),
         ),
       ],
-      // create: (ctx)=>Products(), this is an alternative way, which is rarely used but is important in cases where u need the context.
       child: MaterialApp(
         theme: ThemeData(
           primarySwatch: Colors.purple,
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         routes: {
           ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
-          CartScreen.routeName: (ctx)=>CartScreen(),
+          CartScreen.routeName: (ctx) => CartScreen(),
         },
       ),
     );
