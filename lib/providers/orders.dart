@@ -18,10 +18,16 @@ class Orders with ChangeNotifier {
   }
 
   void addOrder(List<CartItem> cartProducts, double total) {
-    _orders.insert(
-        0,
-        OrderItem(
-            id:DateTime.now().toString(), amount:total, products:cartProducts, datatime:DateTime.now()));
-    notifyListeners();
+    if (total == 0) {
+    } else {
+      _orders.insert(
+          0,
+          OrderItem(
+              id: DateTime.now().toString(),
+              amount: total,
+              products: cartProducts,
+              datatime: DateTime.now()));
+      notifyListeners();
+    }
   }
 }
